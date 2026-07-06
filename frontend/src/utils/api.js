@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // relative path which is proxied locally and resolved directly in production
 const api = axios.create({
-  baseURL: import.meta.env.VITE_SUPABASE_GATEWAY_URL || '/functions/v1/api-gateway',
+  baseURL: import.meta.env.VITE_SUPABASE_GATEWAY_URL || 'https://qcxcbrfnepuztgugpmdx.supabase.co/functions/v1/api-gateway',
   headers: {
     'Content-Type': 'application/json',
   }

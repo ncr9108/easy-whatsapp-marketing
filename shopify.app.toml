@@ -19,3 +19,11 @@ redirect_urls = [
 
 [webhooks]
 api_version = "2026-04"
+
+[[webhooks.subscriptions]]
+compliance_topics = [
+  "customers/data_request",
+  "customers/redact",
+  "shop/redact"
+]
+uri = "https://qcxcbrfnepuztgugpmdx.supabase.co/functions/v1/shopify-webhooks"

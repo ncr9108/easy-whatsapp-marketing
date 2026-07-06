@@ -2,7 +2,7 @@
 
 client_id = "b94bc8ae8331950862d816226373cb70"
 name = "EasyWhatsAppMarketing"
-application_url = "http://localhost:5173"
+application_url = "https://easy-whatsapp-marketing.vercel.app"
 embedded = true
 
 [access_scopes]

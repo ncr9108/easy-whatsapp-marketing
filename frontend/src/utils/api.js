@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // relative path which is proxied locally and resolved directly in production
 const api = axios.create({
-  baseURL: '/functions/v1/api-gateway',
+  baseURL: import.meta.env.VITE_SUPABASE_GATEWAY_URL || '/functions/v1/api-gateway',
   headers: {
     'Content-Type': 'application/json',
   }
@@ -44,7 +44,10 @@ api.interceptors.response.use(
     
     // Redirect to OAuth install flow if unauthorized (401) or forbidden (403)
     if (status === 401 || status === 403) {
-      const errorDetail = error.response?.data?.error || '';
+      const rawError = error.response?.data?.error || '';
+      const errorDetail = typeof rawError === 'object' && rawError !== null
+        ? (rawError.message || JSON.stringify(rawError))
+        : String(rawError);
       console.warn('[API Interceptor] Re-auth checking details:', errorDetail);
       
       // Prevent infinite redirect loops if token verification is failing at signature/crypto level

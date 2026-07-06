@@ -49,7 +49,10 @@ export default function WhatsAppSetup() {
       setAccount(response.data.data);
       setAccessToken('••••••••••••••••••••••••••••••••');
     } catch (error) {
-      const errorText = error.response?.data?.error || error.message;
+      const rawError = error.response?.data?.error || error.message;
+      const errorText = typeof rawError === 'object' && rawError !== null
+        ? (rawError.message || JSON.stringify(rawError))
+        : String(rawError);
       setErrorMsg(errorText);
     } finally {
       setSubmitting(false);
@@ -70,7 +73,11 @@ export default function WhatsAppSetup() {
       setAccessToken('');
       setSuccessMsg('WhatsApp account disconnected successfully.');
     } catch (error) {
-      setErrorMsg(error.response?.data?.error || error.message);
+      const rawError = error.response?.data?.error || error.message;
+      const errorText = typeof rawError === 'object' && rawError !== null
+        ? (rawError.message || JSON.stringify(rawError))
+        : String(rawError);
+      setErrorMsg(errorText);
     } finally {
       setSubmitting(false);
     }

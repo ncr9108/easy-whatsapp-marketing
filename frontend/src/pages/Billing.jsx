@@ -38,7 +38,11 @@ export default function Billing() {
         throw new Error('No confirmation URL returned from Shopify billing API');
       }
     } catch (error) {
-      setErrorMsg(error.response?.data?.error || error.message);
+      const rawError = error.response?.data?.error || error.message;
+      const errorText = typeof rawError === 'object' && rawError !== null
+        ? (rawError.message || JSON.stringify(rawError))
+        : String(rawError);
+      setErrorMsg(errorText);
       setUpgrading(null);
     }
   }

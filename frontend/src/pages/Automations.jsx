@@ -102,7 +102,11 @@ export default function Automations() {
       setRules(response.data.rules);
       setSuccessMsg('Scheduler triggers updated successfully.');
     } catch (error) {
-      setErrorMsg(error.response?.data?.error || error.message);
+      const rawError = error.response?.data?.error || error.message;
+      const errorText = typeof rawError === 'object' && rawError !== null
+        ? (rawError.message || JSON.stringify(rawError))
+        : String(rawError);
+      setErrorMsg(errorText);
     } finally {
       setSavingRules(false);
     }
@@ -144,7 +148,11 @@ export default function Automations() {
 
       setSuccessMsg(`${targetType.replace('_', ' ')} template saved locally. Please sync to WhatsApp to activate it.`);
     } catch (error) {
-      setErrorMsg(error.response?.data?.error || error.message);
+      const rawError = error.response?.data?.error || error.message;
+      const errorText = typeof rawError === 'object' && rawError !== null
+        ? (rawError.message || JSON.stringify(rawError))
+        : String(rawError);
+      setErrorMsg(errorText);
     } finally {
       setSavingTemplate(false);
     }
@@ -203,7 +211,10 @@ export default function Automations() {
       
       setSuccessMsg(`Template sync request submitted to Meta as "${updatedTemplate.meta_template_name}". Review status may take a few minutes.`);
     } catch (error) {
-      const errorText = error.response?.data?.error || error.message;
+      const rawError = error.response?.data?.error || error.message;
+      const errorText = typeof rawError === 'object' && rawError !== null
+        ? (rawError.message || JSON.stringify(rawError))
+        : String(rawError);
       setErrorMsg(`Meta sync failed: ${errorText}`);
       
       if (error.response?.data?.template) {

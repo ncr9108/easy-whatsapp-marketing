@@ -1,0 +1,21 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "b94bc8ae8331950862d816226373cb70"
+name = "EasyWhatsAppMarketing"
+application_url = "http://localhost:5173"
+embedded = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_orders,write_draft_orders,write_checkouts,read_checkouts,read_orders"
+optional_scopes = [ ]
+use_legacy_install_flow = false
+
+[auth]
+redirect_urls = [
+  "https://qcxcbrfnepuztgugpmdx.supabase.co/functions/v1/shopify-auth/callback",
+  "https://qcxcbrfnepuztgugpmdx.supabase.co/functions/v1/api-gateway/billing-callback"
+]
+
+[webhooks]
+api_version = "2026-04"

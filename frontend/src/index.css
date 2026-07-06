@@ -1,0 +1,415 @@
+/* High-End Design System & Custom Components for EasyWhatsAppMarketing */
+
+:root {
+  --primary-color: #008060;
+  --primary-dark: #005e46;
+  --primary-light: #f0fdf4;
+  --whatsapp-teal: #008069; /* Modern WhatsApp Green */
+  --whatsapp-bg: #efeae2;
+  --text-primary: #202223;
+  --text-secondary: #6d7175;
+  --border-color: #e1e3e5;
+  --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.015);
+  --hover-shadow: 0 12px 32px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #f6f6f7;
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Micro-animations */
+.animate-fade-in {
+  animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Premium Card Overhaul */
+.premium-card {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--card-shadow);
+  transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow: hidden;
+}
+
+.premium-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--hover-shadow);
+  border-color: #c9cccf;
+}
+
+.metric-card {
+  border-left: 4px solid var(--primary-color);
+}
+.metric-card-success {
+  border-left: 4px solid #10b981;
+}
+
+/* Polaris Choice layout alignment (LTR checkboxes) */
+.Polaris-Choice {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 8px !important;
+  cursor: pointer;
+}
+
+/* Generous gap between inline checkboxes */
+.delay-checkboxes-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px !important;
+  padding: 10px 0;
+}
+
+/* Steps Timeline for Setup instructions */
+.timeline {
+  position: relative;
+  padding-left: 36px;
+  margin: 12px 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background-color: var(--border-color);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.timeline-icon {
+  position: absolute;
+  left: -32px;
+  top: 2px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: white;
+  border: 2px solid var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: bold;
+  color: var(--primary-color);
+  z-index: 1;
+}
+
+.timeline-item.active .timeline-icon {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.timeline-content {
+  padding-left: 8px;
+}
+
+/* ==========================================================================
+   IPHONE MOCKUP SIMULATOR (CRYSTAL CLEAR DESIGN)
+   ========================================================================== */
+.phone-mockup {
+  width: 280px;
+  height: 440px;
+  background-color: white;
+  border-radius: 20px;
+  border: 1px solid #e1e3e5; /* 1px crisp border instead of 10px chunky bezel! */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Clean, modern screen with solid WhatsApp background */
+.phone-screen {
+  flex-grow: 1;
+  background-color: #f0f2f5; /* clean light gray background instead of beige doodle */
+  display: flex;
+  flex-direction: column;
+}
+
+/* WhatsApp teal header */
+.phone-header {
+  background-color: var(--whatsapp-teal);
+  color: white;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  z-index: 10;
+}
+
+.phone-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 11px;
+}
+
+.phone-contact-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.phone-contact-name {
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.phone-contact-status {
+  font-size: 9px;
+  opacity: 0.9;
+}
+
+/* Header icons (video, call, menu) */
+.phone-header-icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0.9;
+}
+
+.phone-header-icons svg {
+  fill: white;
+  width: 14px;
+  height: 14px;
+}
+
+/* Messages area */
+.phone-chat-area {
+  flex-grow: 1;
+  padding: 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* Custom WhatsApp Sent Bubble (Right aligned) */
+.whatsapp-bubble-sent {
+  background-color: #d9fdd3; /* beautiful light green sent bubble */
+  color: #111b21;
+  border-radius: 8px 0px 8px 8px;
+  padding: 8px 12px;
+  font-size: 12px;
+  line-height: 1.4;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+  max-width: 85%;
+  margin-bottom: 6px;
+  position: relative;
+  align-self: flex-end; /* Align right */
+  word-wrap: break-word;
+}
+
+/* Sent bubble little tail */
+.whatsapp-bubble-sent::before {
+  content: '';
+  position: absolute;
+  right: -5px;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-top: 0px solid transparent;
+  border-left: 5px solid #d9fdd3;
+  border-bottom: 5px solid transparent;
+}
+
+.whatsapp-bubble-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 9px;
+  color: #667781;
+  float: right;
+  margin-top: 4px;
+  margin-left: 12px;
+}
+
+.whatsapp-double-tick {
+  color: #53bdeb; /* light blue ticks */
+  display: flex;
+}
+
+/* Footer mock input bar */
+.phone-footer-input {
+  background-color: #f0f2f5;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-top: 1px solid #e1e3e5;
+  z-index: 10;
+}
+
+.phone-input-container {
+  background-color: white;
+  border-radius: 20px;
+  padding: 6px 12px;
+  flex-grow: 1;
+  font-size: 12px;
+  color: #8696a0;
+  border: 1px solid #e1e3e5;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.phone-input-icon {
+  display: flex;
+  opacity: 0.6;
+}
+
+.phone-input-text {
+  flex-grow: 1;
+}
+
+.phone-send-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #00a884;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.phone-send-btn:hover {
+  background-color: #008f70;
+}
+
+/* ==========================================================================
+   PREMIUM BILLING CARDS (HIGH-END SAAS STYLE)
+   ========================================================================== */
+.pricing-card {
+  border-top: 4px solid var(--border-color);
+  background: white;
+}
+
+.pricing-card.popular {
+  border-top: 4px solid var(--primary-color);
+  border-left: 1px solid rgba(0, 128, 96, 0.25);
+  border-right: 1px solid rgba(0, 128, 96, 0.25);
+  border-bottom: 1px solid rgba(0, 128, 96, 0.25);
+  box-shadow: 0 12px 36px rgba(0, 128, 96, 0.08);
+  background: linear-gradient(180deg, #f7fbf9 0%, #ffffff 180px);
+  position: relative;
+}
+
+.popular-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 4px rgba(0,128,96,0.15);
+}
+
+.pricing-price-accent {
+  font-family: 'Inter', sans-serif;
+  font-size: 38px;
+  font-weight: 800;
+  color: var(--primary-dark);
+  line-height: 1.1;
+}
+
+/* List with styled green checkmarks */
+.feature-check-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+}
+
+.feature-check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 12px;
+  font-size: 13.5px;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.feature-check-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 1px;
+  color: #10b981;
+  font-weight: 900;
+  font-size: 14px;
+}
+
+/* Status Indicator Labels */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status-pill-success {
+  background-color: #e6f4ea;
+  color: #137333;
+}
+
+.status-pill-error {
+  background-color: #fce8e6;
+  color: #c5221f;
+}
+
+.status-bullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.status-bullet-connected {
+  background-color: #10b981;
+  box-shadow: 0 0 6px #10b981;
+}
+
+.status-bullet-disconnected {
+  background-color: #ef4444;
+  box-shadow: 0 0 6px #ef4444;
+}

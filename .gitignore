@@ -1,0 +1,17 @@
+# Dependency directories
+node_modules/
+frontend/node_modules/
+
+# Build outputs
+frontend/dist/
+
+# Environment files
+.env
+frontend/.env
+.env.*
+
+# System and logs
+.DS_Store
+*.log
+.temp/
+.shopify/
